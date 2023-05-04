@@ -1,0 +1,7 @@
+---
+project:
+  passwd: "test-passwd"
+  level: "test-level"
+  name: "test-user"
+  admin: "test-user"
+  packageName: null

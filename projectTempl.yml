@@ -1,0 +1,9 @@
+## YAML Template.
+---
+
+project:
+  name: $user_name
+  org: tmrnd
+  admin: $user_name
+  passwd: $user_passwd
+  level: $user_level

@@ -1,0 +1,46 @@
+## YAML Template.
+---
+
+
+templateFilePath: /home/anwar/NetBeansProjects/OcAdminSvcs/projectTempl.yml
+writeToPath: /root/playbooks/project-provisioning/vars
+pathToScript: /root/playbooks/project-provisioning
+scriptCreateUser: runCreateUserSIT.sh
+scriptChangePasswd: runChangePasswdSIT.sh
+scriptDeleteUser: runDeleteUserSIT.sh
+
+server:
+  adminMinThreads: 1
+  adminMaxThreads: 64
+  adminContextPath: /
+  shutdownGracePeriod: 3s
+  applicationContextPath: /
+  applicationConnectors:
+    - type: http
+      port: 8190
+
+
+  adminConnectors:
+    - type: http
+      port: 8191
+      
+logging:
+  level: INFO
+
+ # Logger-specific levels.
+  loggers:
+
+    # Sets the level for 'com.tmrnd.swift.framework' to DEBUG.
+    com.tmrnd.cp.ocadminsvcs: DEBUG
+      
+  appenders:
+    - type: console
+      logFormat: "%-30(%d{ISO8601} %-5level ) %logger{0} - %msg%n"
+    - type: file
+      currentLogFilename: /var/log/ocAdmin/svcs.log
+      threshold: ALL
+      archive: true
+      archivedLogFilenamePattern: /var/log/ocAdmin/svcs-%d{yyyy-MM-dd}.log.gz
+      archivedFileCount: 31
+      timeZone: UTC
+      logFormat: "%-30(%d{ISO8601} %-5level ) %logger{0} - %msg%n"
